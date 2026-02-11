@@ -9,6 +9,8 @@ import Footer from "../components/Footer.astro";
 const clientName = "TechNova Solutions";
 const primaryColor = "bg-emerald-950"; // Deep Forest Green
 const accentColor = "text-yellow-400"; // Gold
+// 1. Automatically find all images in that folder
+const images = import.meta.glob("/src/images/*.{jpeg,jpg,png,gif,avif}");
 
 // Professional tip: Store your data in an array
 const services = [
@@ -33,22 +35,22 @@ const projects = [
   {
     title: "E-Commerce Rebrand",
     category: "Web Design",
-    image: "src/images/e-commerce.avif",
+    imagePath: "/src/images/webdesign.jpg",
   },
   {
     title: "SaaS Dashboard",
     category: "UI/UX Development",
-    image: "src/images/sass.png",
+    imagePath: "/src/images/sass.png",
   },
   {
     title: "Fintech App",
     category: "Mobile App",
-    image: "src/images/fintech.jpg",
+    imagePath: "/src/images/fintech.jpg",
   },
   {
     title: "AI Analytics Tool",
     category: "Product Design",
-    image: "src/images/ai_analytics.jpg",
+    imagePath: "/src/images/ai_analytics.jpg",
   },
 ];
 ---
@@ -324,7 +326,7 @@ const projects = [
                 <ProjectCard
                   title={project.title}
                   category={project.category}
-                  image={project.image}
+                  imagePath={project.imagePath}
                   index={index}
                 />
               ))

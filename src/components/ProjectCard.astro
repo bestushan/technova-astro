@@ -1,13 +1,21 @@
 ---
 // src/components/ProjectCard.astro
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   category: string;
-  image: string;
+  imagePath: string;
   index: number; // We use this for the staggered delay
 }
 
-const { title, category, image, index } = Astro.props;
+const { title, category, imagePath, index } = Astro.props;
+// 2. Resolve the image metadata from the path
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/*.{jpeg,jpg,png,gif,avif}",
+);
+if (!images[imagePath])
+  throw new Error(`"${imagePath}" does not exist in "src/images/"`);
 ---
 
 <div
@@ -15,10 +23,12 @@ const { title, category, image, index } = Astro.props;
   style={`animation-delay: ${index * 150}ms;`}
 >
   <!-- Image with Hover Scale -->
-  <img
-    src={image}
+  <Image
+    src={images[imagePath]()}
     alt={title}
-    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+    width={800}
+    height={600}
+    class="h-full w-full object-cover transition-all ..."
   />
 
   <!-- Gradient Overlay -->
