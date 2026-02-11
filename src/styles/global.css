@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* src/styles/global.css */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal {
+  view-timeline-name: --revealing;
+  view-timeline-axis: block;
+  animation: reveal linear both;
+  animation-timeline: --revealing;
+  animation-range: entry 15% cover 35%;
+}
+
+body {
+  background-color: rgba(231, 198, 7, 0.05);
+}

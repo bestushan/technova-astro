@@ -1,17 +1,364 @@
 ---
+import "../styles/global.css";
+import FeatureCard from "../components/FeatureCard.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 
+const clientName = "TechNova Solutions";
+const primaryColor = "bg-emerald-950"; // Deep Forest Green
+const accentColor = "text-yellow-400"; // Gold
+
+// Professional tip: Store your data in an array
+const services = [
+  {
+    title: "Web Design",
+    desc: "Stunning, modern visuals tailored to your brand.",
+    icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+  },
+  {
+    title: "SEO Hosting",
+    desc: "Lightning fast loading speeds for better rankings.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    title: "AI Integration",
+    desc: "Smart workflows to automate your business.",
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+  },
+];
+
+const projects = [
+  {
+    title: "E-Commerce Rebrand",
+    category: "Web Design",
+    image: "src/images/e-commerce.avif",
+  },
+  {
+    title: "SaaS Dashboard",
+    category: "UI/UX Development",
+    image: "src/images/sass.png",
+  },
+  {
+    title: "Fintech App",
+    category: "Mobile App",
+    image: "src/images/fintech.jpg",
+  },
+  {
+    title: "AI Analytics Tool",
+    category: "Product Design",
+    image: "src/images/ai_analytics.jpg",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="en" class="bg-white dark:bg-emerald-950 min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelEdge Studios - Web Design Agency</title>
+    <!-- Inter Font CDN -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white dark:bg-emerald-950 min-h-screen text-gray-900 dark:text-gray-100"
+  >
+    <Layout title="TechNova Solutions | Web Design Agency">
+      <!-- Navigation Bar -->
+      <nav
+        class="bg-emerald-950 py-4 px-8 flex items-center justify-between shadow-lg shadow-emerald-900/30"
+      >
+        <div class="text-2xl font-extrabold tracking-tight text-yellow-300">
+          <span>{clientName}</span>
+        </div>
+        <ul class="flex space-x-8">
+          <li>
+            <a
+              href="#"
+              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#projects"
+              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="#premium-services"
+              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
+              >Premium Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <a
+          href="#start"
+          class="bg-yellow-400 text-emerald-950 font-semibold px-5 py-2 rounded-lg ml-6 shadow hover:bg-yellow-300 hover:text-emerald-900 transition"
+          >Start Project</a
+        >
+      </nav>
+
+      <!-- Hero Section -->
+      <section
+        class="flex flex-col items-center justify-center text-center py-24 px-6 bg-linear-to-b from-emerald-950 via-emerald-900 to-emerald-800"
+      >
+        <h1 class="text-5xl sm:text-7xl font-extrabold text-white mb-4">
+          Welcome to <span class="text-yellow-400 drop-shadow-md"
+            >{clientName}</span
+          >
+        </h1>
+        <h1
+          class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-white"
+        >
+          Elevate Your Brand with <span class="text-yellow-400">Stunning</span> Web
+          Design
+        </h1>
+        <p class="text-lg sm:text-2xl max-w-2xl text-yellow-100 mb-8">
+          We craft memorable digital experiences for businesses who want to
+          stand out. Modern, responsive, and uniquely yours.
+        </p>
+        <a
+          href="#start"
+          class="inline-block bg-yellow-400 hover:bg-yellow-300 hover:-translate-y-1 text-emerald-950 font-bold px-8 py-4 rounded-lg shadow-lg active:scale-95 transition-all duration-300 ease-out text-lg"
+          >Start Project</a
+        >
+      </section>
+
+      <!-- Services Grid -->
+      <section id="services" class="max-w-6xl mx-auto py-20 px-6 reveal">
+        <h2
+          class="text-3xl font-bold text-center mb-12 text-emerald-950 dark:text-yellow-200"
+        >
+          Our Services
+        </h2>
+        <div class="grid md:grid-cols-3 gap-10 reveal">
+          <!-- Service 1 -->
+          <div
+            class="bg-white dark:bg-emerald-900 rounded-xl p-8 shadow hover:shadow-2xl transition border border-yellow-100 dark:border-yellow-900"
+          >
+            <div class="mb-4 flex items-center justify-center">
+              <span
+                class="inline-block bg-yellow-50 dark:bg-yellow-900 rounded-full p-3"
+              >
+                <!-- Device Mobile Icon styled with Deep Forest Green & Gold -->
+                <svg
+                  class="w-8 h-8 text-emerald-900 dark:text-yellow-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    x="7"
+                    y="2"
+                    width="10"
+                    height="20"
+                    rx="2"
+                    stroke="currentColor"
+                    fill="none"></rect>
+                  <circle cx="12" cy="18" r="1.5" fill="currentColor"></circle>
+                </svg>
+              </span>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-emerald-950 dark:text-yellow-200"
+            >
+              Responsive Web Design
+            </h3>
+            <p class="text-emerald-800 dark:text-yellow-100">
+              Beautiful, fast websites that look perfect on every screen
+              size—mobile, tablet, and desktop.
+            </p>
+          </div>
+          <!-- Service 2 -->
+          <div
+            class="bg-white dark:bg-emerald-900 rounded-xl p-8 shadow hover:shadow-2xl transition border border-yellow-100 dark:border-yellow-900"
+          >
+            <div class="mb-4 flex items-center justify-center">
+              <span
+                class="inline-block bg-yellow-50 dark:bg-yellow-900 rounded-full p-3"
+              >
+                <!-- Lightning Bolt Icon styled with Deep Forest Green & Gold -->
+                <svg
+                  class="w-8 h-8 text-emerald-900 dark:text-yellow-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline
+                    points="13 2 13 9 20 9"
+                    stroke="currentColor"
+                    fill="none"></polyline>
+                  <polyline
+                    points="11 22 11 15 4 15"
+                    stroke="currentColor"
+                    fill="none"></polyline>
+                  <polyline
+                    points="20 9 4 15 11 22 13 9 20 9"
+                    stroke="currentColor"
+                    fill="none"></polyline>
+                </svg>
+              </span>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-emerald-950 dark:text-yellow-200"
+            >
+              Brand Identity & UI/UX
+            </h3>
+            <p class="text-emerald-800 dark:text-yellow-100">
+              From logo to color palette, we build brand experiences that leave
+              a lasting impression.
+            </p>
+          </div>
+          <!-- Service 3 -->
+          <div
+            class="bg-white dark:bg-emerald-900 rounded-xl p-8 shadow hover:shadow-2xl transition border border-yellow-100 dark:border-yellow-900"
+          >
+            <div class="mb-4 flex items-center justify-center">
+              <span
+                class="inline-block bg-yellow-50 dark:bg-yellow-900 rounded-full p-3"
+              >
+                <!-- Chart Bar Icon styled with Deep Forest Green & Gold -->
+                <svg
+                  class="w-8 h-8 text-emerald-900 dark:text-yellow-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    x="3"
+                    y="13"
+                    width="4"
+                    height="8"
+                    rx="1"
+                    stroke="currentColor"
+                    fill="none"></rect>
+                  <rect
+                    x="9"
+                    y="9"
+                    width="4"
+                    height="12"
+                    rx="1"
+                    stroke="currentColor"
+                    fill="none"></rect>
+                  <rect
+                    x="15"
+                    y="5"
+                    width="4"
+                    height="16"
+                    rx="1"
+                    stroke="currentColor"
+                    fill="none"></rect>
+                </svg>
+              </span>
+            </div>
+            <h3
+              class="text-xl font-semibold mb-2 text-emerald-950 dark:text-yellow-200"
+            >
+              SEO & Analytics
+            </h3>
+            <p class="text-emerald-800 dark:text-yellow-100">
+              We optimize your site for speed and discoverability, then track
+              success with in-depth analytics.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <!-- Header Area -->
+          <div
+            class="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
+          >
+            <div class="max-w-2xl">
+              <h2 class="text-4xl md:text-5xl font-bold text-emerald-950 mb-6">
+                Selected Works
+              </h2>
+              <p class="text-lg text-emerald-800">
+                We push the boundaries of digital design to create unique brand
+                experiences that convert.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1 hover:text-emerald-800 hover:border-emerald-800 transition-all"
+            >
+              Browse All Projects
+            </a>
+          </div>
+
+          <!-- Staggered Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+            {
+              projects.map((project, index) => (
+                <ProjectCard
+                  title={project.title}
+                  category={project.category}
+                  image={project.image}
+                  index={index}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <section class="max-w-6xl mx-auto px-4 py-20 reveal">
+          <div class="text-center mb-16">
+            <h2
+              class="text-4xl font-bold text-emerald-950 dark:text-yellow-200"
+            >
+              Premium Services
+            </h2>
+          </div>
+
+          <!-- The Grid Container -->
+          <div class="grid grid-cols-1 reveal md:grid-cols-3 gap-8">
+            {
+              services.map((service) => (
+                <FeatureCard
+                  title={service.title}
+                  description={service.desc}
+                  iconPath={service.icon}
+                />
+              ))
+            }
+          </div>
+        </section>
+      </section>
+      <Contact />
+      <Footer />
+    </Layout>
+  </body>
 </html>

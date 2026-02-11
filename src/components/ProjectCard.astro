@@ -1,0 +1,58 @@
+---
+// src/components/ProjectCard.astro
+interface Props {
+  title: string;
+  category: string;
+  image: string;
+  index: number; // We use this for the staggered delay
+}
+
+const { title, category, image, index } = Astro.props;
+---
+
+<div
+  class="reveal group relative overflow-hidden rounded-3xl bg-gray-900 aspect-square h-full w-full"
+  style={`animation-delay: ${index * 150}ms;`}
+>
+  <!-- Image with Hover Scale -->
+  <img
+    src={image}
+    alt={title}
+    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+  />
+
+  <!-- Gradient Overlay -->
+  <div
+    class="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent"
+  >
+  </div>
+
+  <!-- Text Content -->
+  <div class="absolute bottom-0 left-0 p-8 w-full">
+    <p
+      class="text-emerald-400 text-sm font-medium mb-2 tracking-widest uppercase"
+    >
+      {category}
+    </p>
+    <h3 class="text-2xl font-bold text-white mb-4">{title}</h3>
+
+    <a
+      href="#"
+      class="inline-flex items-center text-white text-sm font-semibold group/link"
+    >
+      View Project
+      <svg
+        class="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+</div>

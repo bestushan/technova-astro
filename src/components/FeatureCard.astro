@@ -1,0 +1,63 @@
+---
+// src/components/FeatureCard.astro
+interface Props {
+  title: string;
+  description: string;
+  iconPath: string; // The SVG path data
+}
+
+const { title, description, iconPath } = Astro.props;
+---
+
+<div
+  class="group relative p-8 rounded-3xl border border-yellow-100 dark:border-yellow-900 bg-white dark:bg-emerald-900 hover:border-yellow-500/50 transition-all duration-500 shadow-sm hover:shadow-xl overflow-hidden"
+>
+  <!-- The Animated Glow -->
+  <!-- Inside FeatureCard.astro, add this absolute div -->
+  <div
+    class="absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+bg-[radial-gradient(600px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(231,198,7,0.3),transparent_40%)]"
+  >
+  </div>
+
+  <script>
+    // This tiny script makes the glow follow the mouse
+    document.querySelectorAll(".group").forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const mouseEvent = e as MouseEvent;
+        const x = mouseEvent.clientX - rect.left;
+        const y = mouseEvent.clientY - rect.top;
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      });
+    });
+  </script>
+
+  <div class="relative z-10">
+    <!-- Dynamic Icon -->
+    <div
+      class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-600 transition-all duration-300"
+    >
+      <svg
+        class="w-6 h-6 text-emerald-600 group-hover:text-white transition-colors"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d={iconPath}
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <h3 class="text-xl font-bold text-emerald-950 dark:text-yellow-200 mb-2">
+      {title}
+    </h3>
+    <p class="text-emerald-800 dark:text-yellow-100 leading-relaxed">
+      {description}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css"; // Import Tailwind v4 here once
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen bg-gray-50 text-gray-900 antialiased">
+    <!-- You can put your Navbar here so it shows on every page -->
+    <main class="grow">
+      <slot />
+      <!-- Everything from index.astro will appear where <slot /> is -->
+    </main>
+  </body>
+</html>
