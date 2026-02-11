@@ -12,6 +12,8 @@ const accentColor = "text-yellow-400"; // Gold
 // 1. Automatically find all images in that folder
 const images = import.meta.glob("/src/images/*.{jpeg,jpg,png,gif,avif}");
 
+const GA_ID = "G-B75BHN69RW";
+
 // Professional tip: Store your data in an array
 const services = [
   {
@@ -60,7 +62,18 @@ const projects = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PixelEdge Studios - Web Design Agency</title>
+    <title>TechNova Solutions - Web Design Agency</title>
+    <!-- Google Tag (gtag.js) -->
+    <script async src={`https://www.googletagmanager.com{GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", GA_ID);
+    </script>
     <!-- Inter Font CDN -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
@@ -80,13 +93,15 @@ const projects = [
       <nav
         class="bg-emerald-950 py-4 px-8 flex items-center justify-between shadow-lg shadow-emerald-900/30"
       >
-        <div class="text-2xl font-extrabold tracking-tight text-yellow-300">
+        <div
+          class="text-lg md:text-2xl font-extrabold tracking-tight text-yellow-300"
+        >
           <span>{clientName}</span>
         </div>
         <ul class="flex space-x-8">
           <li>
             <a
-              href="#"
+              href="#home"
               class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
               >Home</a
             >
@@ -131,18 +146,22 @@ const projects = [
       <section
         class="flex flex-col items-center justify-center text-center py-24 px-6 bg-linear-to-b from-emerald-950 via-emerald-900 to-emerald-800"
       >
-        <h1 class="text-5xl sm:text-7xl font-extrabold text-white mb-4">
+        <h1
+          class="text-3xl md:text-5xl sm:text-7xl font-extrabold text-white mb-4"
+        >
           Welcome to <span class="text-yellow-400 drop-shadow-md"
             >{clientName}</span
           >
         </h1>
         <h1
-          class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-white"
+          class="text-2xl md:text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-white"
         >
           Elevate Your Brand with <span class="text-yellow-400">Stunning</span> Web
           Design
         </h1>
-        <p class="text-lg sm:text-2xl max-w-2xl text-yellow-100 mb-8">
+        <p
+          class="text-sm md:text-lg sm:text-2xl max-w-2xl text-yellow-100 mb-8"
+        >
           We craft memorable digital experiences for businesses who want to
           stand out. Modern, responsive, and uniquely yours.
         </p>
