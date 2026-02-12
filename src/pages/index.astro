@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
@@ -92,61 +93,10 @@ const projects = [
   >
     <Layout title="TechNova Solutions | Web Design Agency">
       <!-- Navigation Bar -->
-      <nav
-        class="bg-emerald-950 py-4 px-8 flex items-center justify-between shadow-lg shadow-emerald-900/30"
-      >
-        <div
-          class="text-lg md:text-2xl font-extrabold tracking-tight text-yellow-300"
-        >
-          <span>{clientName}</span>
-        </div>
-        <ul class="flex space-x-8">
-          <li>
-            <a
-              href="#home"
-              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#services"
-              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#projects"
-              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
-              >Projects</a
-            >
-          </li>
-          <li>
-            <a
-              href="#premium-services"
-              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
-              >Premium Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="text-yellow-200 hover:text-yellow-400 font-semibold transition"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <a
-          href="#start"
-          class="bg-yellow-400 text-emerald-950 font-semibold px-5 py-2 rounded-lg ml-6 shadow hover:bg-yellow-300 hover:text-emerald-900 transition"
-          >Start Project</a
-        >
-      </nav>
-
+      <Navbar />
       <!-- Hero Section -->
       <section
-        class="flex flex-col items-center justify-center text-center py-24 px-6 bg-linear-to-b from-emerald-950 via-emerald-900 to-emerald-800"
+        class="flex flex-col items-center justify-center text-center h-svh py-24 px-6 bg-linear-to-b from-emerald-950 via-emerald-900 to-emerald-800"
       >
         <h1
           class="text-3xl md:text-5xl sm:text-7xl font-extrabold text-white mb-4"
@@ -177,7 +127,7 @@ const projects = [
       <!-- Services Grid -->
       <section id="services" class="max-w-6xl mx-auto py-20 px-6 reveal">
         <h2
-          class="text-3xl font-bold text-center mb-12 text-emerald-950 dark:text-yellow-200"
+          class="text-3xl md:text-5xl font-bold text-center mb-12 text-emerald-950 dark:text-yellow-200"
         >
           Our Services
         </h2>
@@ -317,16 +267,18 @@ const projects = [
         </div>
       </section>
 
-      <section class="py-24 bg-white">
+      <section class="py-24 bg-white" id="projects">
         <div class="max-w-7xl mx-auto px-4">
           <!-- Header Area -->
+          <h2
+            class="text-3xl md:text-5xl font-bold text-center mb-6 text-emerald-950 dark:text-yellow-200"
+          >
+            Projects
+          </h2>
           <div
             class="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
           >
             <div class="max-w-2xl">
-              <h2 class="text-4xl md:text-5xl font-bold text-emerald-950 mb-6">
-                Selected Works
-              </h2>
               <p class="text-lg text-emerald-800">
                 We push the boundaries of digital design to create unique brand
                 experiences that convert.
@@ -356,32 +308,43 @@ const projects = [
         </div>
       </section>
 
-      <section>
-        <section class="max-w-6xl mx-auto px-4 py-20 reveal">
-          <div class="text-center mb-16">
-            <h2
-              class="text-4xl font-bold text-emerald-950 dark:text-yellow-200"
-            >
-              Premium Services
-            </h2>
-          </div>
+      <section
+        class="max-w-6xl mx-auto px-4 py-20 reveal"
+        id="premium-services"
+      >
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-5xl font-bold text-emerald-950 dark:text-yellow-200"
+          >
+            Premium Services
+          </h2>
+        </div>
 
-          <!-- The Grid Container -->
-          <div class="grid grid-cols-1 reveal md:grid-cols-3 gap-8">
-            {
-              services.map((service) => (
-                <FeatureCard
-                  title={service.title}
-                  description={service.desc}
-                  iconPath={service.icon}
-                />
-              ))
-            }
-          </div>
-        </section>
+        <!-- The Grid Container -->
+        <div class="grid grid-cols-1 reveal md:grid-cols-3 gap-8">
+          {
+            services.map((service) => (
+              <FeatureCard
+                title={service.title}
+                description={service.desc}
+                iconPath={service.icon}
+              />
+            ))
+          }
+        </div>
       </section>
-      <Contact />
-      <Footer />
+
+      <section id="contact" class="reveal bg-white">
+        <h2
+          class="text-3xl md:text-5xl font-bold text-emerald-950 dark:text-yellow-200 text-center"
+        >
+          Let's Connect
+        </h2>
+        <Contact />
+      </section>
+      <section id="#footer">
+        <Footer />
+      </section>
     </Layout>
   </body>
 </html>

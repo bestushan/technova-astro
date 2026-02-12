@@ -1,0 +1,94 @@
+---
+// Define your navigation links here
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
+  { name: "Premium Services", href: "#premium-services" },
+  { name: "Contact", href: "#contact" },
+];
+---
+
+<nav
+  class="fixed top-0 w-full z-50 bg-emerald-950/80 backdrop-blur-md border-b border-emerald-900"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      <!-- Logo -->
+      <div class="shrink-0">
+        <a
+          href="/"
+          class="md:text-4xl text-2xl font-bold bg-linear-to-r from-emerald-100 to-yellow-400 bg-clip-text text-transparent text-shadow-amber-950 text-shadow-xs/20"
+        >
+          TECHNOVA SOLUTIONS
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-10 items-center">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm lg:text-md font-semibold text-gray-100 hover:text-emerald-600 transition-colors duration-200"
+            >
+              {link.name}
+            </a>
+          ))
+        }
+        <a
+          href="#contact"
+          class="bg-emerald-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-200 transition-all active:scale-95"
+        >
+          Get Started
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-gray-600 p-2">
+          <svg
+            xmlns="http://www.w3.org"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-2"
+  >
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block py-3 text-base font-semibold text-gray-700 border-b border-gray-50"
+        >
+          {link.name}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  // Simple "Hard-Coded" logic for mobile menu toggle
+  const btn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>
